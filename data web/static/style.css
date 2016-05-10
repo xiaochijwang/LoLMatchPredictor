@@ -1,0 +1,236 @@
+body
+{
+	background-color: #ccc;
+	background-size: cover;
+	font-family: "Segoe UI";
+}
+#loading-container
+{
+	background-color: #000;
+	opacity: 0.7;
+	text-align: center;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+	visibility: hidden;
+}
+#loading-container img
+{
+	margin-top: 300px;
+	height: 250px;
+	width: 250px;
+}
+div.container
+{
+	margin: auto;
+}
+div.description
+{
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 1px solid #999;
+	border-radius: 10px;
+	margin: auto;
+	padding: 20px;
+	position: relative;
+	top: 50%;
+	transform: translateY(70%);
+	height: 300px;
+	width: 580px;
+}
+div.description-splash
+{
+	text-align: center;
+}
+div.description-splash img
+{
+	margin-top: 20px;
+	height: 150px;
+	width: 300px;
+}
+div.description-title
+{
+	background-color: rgba(0, 0, 0, 0.4);
+	color: #cb4;
+	font-family: "Book Antiqua";
+	font-size: 150%;
+	margin: auto;
+	margin-top: -50px;
+	text-align: center;
+	width: 294px;
+}
+div.description-text
+{
+	margin-top: 30px;
+	margin-bottom: -20px;
+	margin-left: 5px;
+}
+div.description-error
+{
+	color: #c00;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+div.search
+{
+	margin: auto;
+	padding-top: 20px;
+	text-align: center;
+}
+div.search input
+{
+	border-radius: 5px;
+	font-size: 130%;
+	height: 40px;
+	width: 500px;
+	padding: 0 8px;
+}
+#search-button
+{
+	background-color: #5c7;
+	border-radius: 5px;
+	margin-left: 5px;
+	padding: 10px;
+}
+#search-button:hover
+{
+	background-color: #6d8;
+	cursor: pointer;
+}
+img.search-icon
+{
+	height: 25px;
+	width: 25px;
+	position: relative;
+	top: 5px;
+	padding-top: 10px;
+}
+div.winner
+{
+	border-radius: 5px;
+	font-size: 130%;
+	text-align: center;
+	margin: auto;
+	padding: 8px 0;
+	position: relative;
+	top: 30px;
+	width: 1200px;
+}
+div.winner.blue
+{
+	border: 1px solid #3ae;
+	background-color: #def;
+}
+div.winner.purple
+{
+	border: 1px solid #94b;
+	background-color: #edf;
+}
+span.winner
+{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+span.winner.blue
+{
+	color: #3ae;
+}
+span.winner.purple
+{
+	color: #94b;
+}
+table
+{
+	border-spacing: 0px;
+	margin: auto;
+	position: relative;
+	top: 50px;
+	height: 600px;
+	width: 1200px;
+}
+table tr th
+{
+	color: #fff;
+	font-size: 110%;
+	padding: 5px;
+}
+table tr th.blue-team
+{
+	background-color: #3ae;
+	width: 50%;
+}
+table tr th.purple-team
+{
+	background-color: #94b;
+	width: 50%;
+}
+table tr td
+{
+	background-color: #fff;
+	border-bottom: 1px solid #999;
+	color: #444;
+	text-align: center;
+}
+table tr td.blue-indicator
+{
+	background-color: #def;
+	width: 6px;
+}
+table tr td.blue-indicator.selected
+{
+	background-color: #9cf;
+}
+table tr td.purple-indicator
+{
+	background-color: #edf;
+	width: 6px;
+}
+table tr td.purple-indicator.selected
+{
+	background-color: #d9f;
+}
+table tr td.blue-player
+{
+	background-color: #def;
+}
+table tr td.purple-player
+{
+	background-color: #edf;
+}
+table tr td.align-left
+{
+	text-align: left;
+}
+table tr td.align-right
+{
+	text-align: right;
+}
+img.profile-icon
+{
+	border: 1px solid #999;
+	height: 60px;
+	width: 60px;
+}
+img.rank-badge
+{
+	height: 75px;
+	width: 75px;
+}
+img.champion-icon
+{
+	height: 56px;
+	width: 56px;
+	padding-left: 3px;
+	padding-top: 9px;
+	position: absolute;
+	z-index: 1;
+}
+img.mastery-badge
+{
+	height: 113px;
+	width: 62px;
+	position: relative;
+	z-index: 2;
+}

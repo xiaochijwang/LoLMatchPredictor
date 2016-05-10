@@ -1,0 +1,123 @@
+<!doctype html>
+<title>LoL Match Predictor</title>
+
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<body background="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{bg}}_0.jpg">
+<div id="loading-container"><img src="../static/images/misc/loading.gif" /></div>
+<div class="container">
+	<div class="search">
+		<input id="search-name" type="text" value="{{summoner_name}}">
+		<span id="search-button"><img class="search-icon" src="../static/images/misc/search.png" /></span>
+	</div>
+
+	<div class="winner {{winner_pred}}">
+		Based on player champion masteries, <span class="winner {{winner_pred}}">{{winner_pred}}</span> side will win with {{winner_prob}}% certainty.
+	</div>
+
+	<table>
+		<tr>
+			<th class="blue-team" colspan="7">Blue Team</th>
+			<th class="purple-team" colspan="7">Purple Team</th>
+		</tr>
+		<tr>
+			<td class="blue-indicator {{in0}}"></td>
+			<td class="blue-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i0}}.png" /></td>
+			<td class="blue-player aslign-left">{{p0}}</td>
+			<td class="blue-player"><img class="rank-badge" src="../static/images/ranks/{{r0}}.png" /></td>
+			<td class="blue-player aslign-left">{{r0}} {{d0}}<br>{{lp0}} LP<br>(<font color="green">{{w0}}</font>/<font color="red">{{l0}}</font>)</td>
+			<td class="blue-player aslign-right">{{c0}}<br>Rank {{ma0}}<br>({{m0}})</td>
+			<td class="blue-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc0}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb0}}.png" /></td>
+			<td class="purple-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc5}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb5}}.png" /></td>
+			<td class="purple-player aslign-left">{{c5}}<br>Rank {{ma5}}<br>({{m5}})</td>
+			<td class="purple-player aslign-right">{{r5}} {{d5}}<br>{{lp5}} LP<br>(<font color="green">{{w5}}</font>/<font color="red">{{l5}}</font>)</td>
+			<td class="purple-player"><img class="rank-badge" src="../static/images/ranks/{{r5}}.png" /></td>
+			<td class="purple-player aslign-right">{{p5}}</td>
+			<td class="purple-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i5}}.png" /></td>
+			<td class="purple-indicator {{in5}}"></td>
+		</tr>
+		<tr>
+			<td class="blue-indicator {{in1}}"></td>
+			<td class="blue-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i1}}.png" /></td>
+			<td class="blue-player aslign-left">{{p1}}</td>
+			<td class="blue-player"><img class="rank-badge" src="../static/images/ranks/{{r1}}.png" /></td>
+			<td class="blue-player aslign-left">{{r1}} {{d1}}<br>{{lp1}} LP<br>(<font color="green">{{w1}}</font>/<font color="red">{{l1}}</font>)</td>
+			<td class="blue-player aslign-right">{{c1}}<br>Rank {{ma1}}<br>({{m1}})</td>
+			<td class="blue-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc1}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb1}}.png" /></td>
+			<td class="purple-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc6}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb6}}.png" /></td>
+			<td class="purple-player aslign-left">{{c6}}<br>Rank {{ma6}}<br>({{m6}})</td>
+			<td class="purple-player aslign-right">{{r6}} {{d6}}<br>{{lp6}} LP<br>(<font color="green">{{w6}}</font>/<font color="red">{{l6}}</font>)</td>
+			<td class="purple-player"><img class="rank-badge" src="../static/images/ranks/{{r6}}.png" /></td>
+			<td class="purple-player aslign-right">{{p6}}</td>
+			<td class="purple-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i6}}.png" /></td>
+			<td class="purple-indicator {{in6}}"></td>
+		</tr>
+		<tr>
+			<td class="blue-indicator {{in2}}"></td>
+			<td class="blue-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i2}}.png" /></td>
+			<td class="blue-player aslign-left">{{p2}}</td>
+			<td class="blue-player"><img class="rank-badge" src="../static/images/ranks/{{r2}}.png" /></td>
+			<td class="blue-player aslign-left">{{r2}} {{d2}}<br>{{lp2}} LP<br>(<font color="green">{{w2}}</font>/<font color="red">{{l2}}</font>)</td>
+			<td class="blue-player aslign-right">{{c2}}<br>Rank {{ma2}}<br>({{m2}})</td>
+			<td class="blue-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc2}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb2}}.png" /></td>
+			<td class="purple-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc7}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb7}}.png" /></td>
+			<td class="purple-player aslign-left">{{c7}}<br>Rank {{ma7}}<br>({{m7}})</td>
+			<td class="purple-player aslign-right">{{r7}} {{d7}}<br>{{lp7}} LP<br>(<font color="green">{{w7}}</font>/<font color="red">{{l7}}</font>)</td>
+			<td class="purple-player"><img class="rank-badge" src="../static/images/ranks/{{r7}}.png" /></td>
+			<td class="purple-player aslign-right">{{p7}}</td>
+			<td class="purple-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i7}}.png" /></td>
+			<td class="purple-indicator {{in7}}"></td>
+		</tr>
+		<tr>
+			<td class="blue-indicator {{in3}}"></td>
+			<td class="blue-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i3}}.png" /></td>
+			<td class="blue-player aslign-left">{{p3}}</td>
+			<td class="blue-player"><img class="rank-badge" src="../static/images/ranks/{{r3}}.png" /></td>
+			<td class="blue-player aslign-left">{{r3}} {{d3}}<br>{{lp3}} LP<br>(<font color="green">{{w3}}</font>/<font color="red">{{l3}}</font>)</td>
+			<td class="blue-player aslign-right">{{c3}}<br>Rank {{ma3}}<br>({{m3}})</td>
+			<td class="blue-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc3}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb3}}.png" /></td>
+			<td class="purple-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc8}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb8}}.png" /></td>
+			<td class="purple-player aslign-left">{{c8}}<br>Rank {{ma8}}<br>({{m8}})</td>
+			<td class="purple-player aslign-right">{{r8}} {{d8}}<br>{{lp8}} LP<br>(<font color="green">{{w8}}</font>/<font color="red">{{l8}}</font>)</td>
+			<td class="purple-player"><img class="rank-badge" src="../static/images/ranks/{{r8}}.png" /></td>
+			<td class="purple-player aslign-right">{{p8}}</td>
+			<td class="purple-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i8}}.png" /></td>
+			<td class="purple-indicator {{in8}}"></td>
+		</tr>
+		<tr>
+			<td class="blue-indicator {{in4}}"></td>
+			<td class="blue-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i4}}.png" /></td>
+			<td class="blue-player aslign-left">{{p4}}</td>
+			<td class="blue-player"><img class="rank-badge" src="../static/images/ranks/{{r4}}.png" /></td>
+			<td class="blue-player aslign-left">{{r4}} {{d4}}<br>{{lp4}} LP<br>(<font color="green">{{w4}}</font>/<font color="red">{{l4}}</font>)</td>
+			<td class="blue-player aslign-right">{{c4}}<br>Rank {{ma4}}<br>({{m4}})</td>
+			<td class="blue-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc4}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb4}}.png" /></td>
+			<td class="purple-player"><img class="champion-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/{{cc9}}.png" /><img class="mastery-badge" src="../static/images/masteries/Champ_Mastery_{{mb9}}.png" /></td>
+			<td class="purple-player aslign-left">{{c9}}<br>Rank {{ma9}}<br>({{m9}})</td>
+			<td class="purple-player aslign-right">{{r9}} {{d9}}<br>{{lp9}} LP<br>(<font color="green">{{w9}}</font>/<font color="red">{{l9}}</font>)</td>
+			<td class="purple-player"><img class="rank-badge" src="../static/images/ranks/{{r9}}.png" /></td>
+			<td class="purple-player aslign-right">{{p9}}</td>
+			<td class="purple-player"><img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{i9}}.png" /></td>
+			<td class="purple-indicator {{in9}}"></td>
+		</tr>
+	</table>
+</div>
+</body>
+
+<script type="text/javascript">
+	document.getElementById("search-name").onkeydown = function () {
+		if (event.keyCode == 13)
+		{
+			document.getElementById("search-button").click();
+		}
+    };
+    document.getElementById("search-button").onclick = function () {
+		name = document.getElementById("search-name").value
+		if (name != null)
+		{
+			document.getElementById("loading-container").style.visibility = 'visible';
+			location.href = "/summoner/" + name.replace(/\s/g, '');;
+		}
+    };
+</script>

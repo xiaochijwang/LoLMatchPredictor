@@ -1,0 +1,38 @@
+<!doctype html>
+<title>LoL Match Predictor</title>
+
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<body background="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{bg}}_0.jpg">
+<div id="loading-container"><img src="../static/images/misc/loading.gif" /></div>
+<div class="container">
+	<div class="description">
+		<div class="description-splash"><img src="../static/images/misc/splash.png" /></div>
+		<div class="description-title">Match Predictor</div>
+		<div class="description-text">Enter a summoner name:</div>
+		<div class="search">
+			<input id="search-name" type="text">
+			<span id="search-button"><img class="search-icon" src="../static/images/misc/search.png" /></span>
+		</div>
+		<div class="description-error">{{error}}</div>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript">
+	document.getElementById("search-name").onkeydown = function () {
+		if (event.keyCode == 13)
+		{
+			document.getElementById("search-button").click();
+		}
+    };
+    document.getElementById("search-button").onclick = function () {
+		name = document.getElementById("search-name").value
+		if (name != null)
+		{
+			document.getElementById("loading-container").style.visibility = 'visible';
+			location.href = "/summoner/" + name.replace(/\s/g, '');;
+		}
+    };
+</script>
