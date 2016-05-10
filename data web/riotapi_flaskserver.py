@@ -64,6 +64,7 @@ def home_page():
 
 @app.route('/summoner/<name>', methods=['GET'])
 def search_user(name):
+	name = name.replace(' ', '')
 	while True:
 		try:
 			summoner = json.loads(urlopen(Request('https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/' + name + '?api_key=' + API_KEY)).read())
@@ -183,6 +184,8 @@ def search_user(name):
 						bg=background, winner_pred=winner_pred, winner_prob=winner_prob, summoner_name=name)
 					
 				except URLError, e:
+					if e.code == 404:
+						return render_template('landing.html', bg=get_condensed_name(random.choice(champion_names)), error='Error! Summoner is currently not in game.')
 					if e.code != 429 and e.code != 500:
 						return render_template('landing.html', bg=get_condensed_name(random.choice(champion_names)), error='Error! Error code ' + str(e.code) + ' querying Riot API for current match for ' + name + '. Please try again later.')
 					time.sleep(2.0)
@@ -190,6 +193,8 @@ def search_user(name):
 					return render_template('landing.html', bg=get_condensed_name(random.choice(champion_names)), error='Error! Error finding current match for ' + name + '. Please try again later.')
 					
 		except URLError, e:
+			if e.code == 404:
+				return render_template('landing.html', bg=get_condensed_name(random.choice(champion_names)), error='Error! Summoner name does not exist.')
 			if e.code != 429 and e.code != 500:
 				return render_template('landing.html', bg=get_condensed_name(random.choice(champion_names)), error='Error! Error code ' + str(e.code) + ' querying Riot API for summoner ID for ' + name + '. Please try again later.')
 			time.sleep(2.0)
