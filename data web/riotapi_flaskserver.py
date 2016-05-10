@@ -181,7 +181,7 @@ def search_user(name):
 						m0=champions_masteries[0], m1=champions_masteries[1], m2=champions_masteries[2], m3=champions_masteries[3], m4=champions_masteries[4], m5=champions_masteries[5], m6=champions_masteries[6], m7=champions_masteries[7], m8=champions_masteries[8], m9=champions_masteries[9],
 						ma0=points_to_rank(champions_masteries[0], True), ma1=points_to_rank(champions_masteries[1], True), ma2=points_to_rank(champions_masteries[2], True), ma3=points_to_rank(champions_masteries[3], True), ma4=points_to_rank(champions_masteries[4], True), ma5=points_to_rank(champions_masteries[5], True), ma6=points_to_rank(champions_masteries[6], True), ma7=points_to_rank(champions_masteries[7], True), ma8=points_to_rank(champions_masteries[8], True), ma9=points_to_rank(champions_masteries[9], True),
 						mb0=points_to_rank(champions_masteries[0], False), mb1=points_to_rank(champions_masteries[1], False), mb2=points_to_rank(champions_masteries[2], False), mb3=points_to_rank(champions_masteries[3], False), mb4=points_to_rank(champions_masteries[4], False), mb5=points_to_rank(champions_masteries[5], False), mb6=points_to_rank(champions_masteries[6], False), mb7=points_to_rank(champions_masteries[7], False), mb8=points_to_rank(champions_masteries[8], False), mb9=points_to_rank(champions_masteries[9], False),
-						bg=background, winner_pred=winner_pred, winner_prob=winner_prob, summoner_name=name)
+						bg=background, winner_pred=winner_pred, winner_prob=int(winner_prob), summoner_name=name)
 					
 				except URLError, e:
 					if e.code == 404:
@@ -202,4 +202,4 @@ def search_user(name):
 			return render_template('landing.html', bg=get_condensed_name(random.choice(champion_names)), error='Error! Error finding summoner ID for ' + name + '. Please try again later.')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=80)
