@@ -33,10 +33,12 @@ def points_to_rank(mastery, limited):
 		return 7
 
 def get_condensed_name(champion):
-	if champion == 'Cho\'Gath'
+	if champion == 'Cho\'Gath':
 		return 'Chogath';
 	elif champion == 'Fiddlesticks':
 		return 'FiddleSticks'
+	elif champion == 'Kha\'Zix':
+		return 'Khazix'
 	elif champion == 'LeBlanc':
 		return 'Leblanc'
 	elif champion == 'Vel\'Koz':
@@ -44,7 +46,7 @@ def get_condensed_name(champion):
 	elif champion == 'Wukong':
 		return 'MonkeyKing'
 	else:
-		return champion.replace(' ', '').replace('\'', '')
+		return champion.replace(' ', '').replace('\'', '').replace('.', '')
 
 f = open('sanitized_data.csv', 'r')
 l = list(csv.reader(f))
